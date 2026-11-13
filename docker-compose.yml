@@ -1,0 +1,15 @@
+services:
+  pulse:
+    build: .
+    container_name: pulse-speed-test
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      PULSE_DATABASE: /app/data/pulse.sqlite3
+    volumes:
+      - pulse-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  pulse-data:
